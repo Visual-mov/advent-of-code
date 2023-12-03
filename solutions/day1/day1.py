@@ -13,7 +13,7 @@ def scan_nums():
     return total
 
 # part one:
-print("Part one: ", scan_nums())
+print("Part one:", scan_nums())
 
 # part two:
 nums = {"one": '1e', "two": '2o', "three": '3e',
@@ -29,4 +29,4 @@ for i in range(len(text)):
                 tok = tok.replace(digit, nums[digit])
         text[i] = tok
 
-print("Part two: ", scan_nums())
+print("Part two:", scan_nums())
