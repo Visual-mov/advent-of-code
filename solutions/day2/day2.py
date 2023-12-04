@@ -6,7 +6,6 @@ power_sum = 0
 totals = {"red": 12, "green": 13, "blue": 14}
 
 for line in text:
-    # I'm too lazy to figure out regex
     (game, sets) = line.split(':')
     game = int(game.replace("Game ", ''))
     sets = [s.strip() for s in sets.split(';')]
