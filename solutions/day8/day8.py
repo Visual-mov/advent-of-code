@@ -1,33 +1,39 @@
-import sys, re
+import sys, re, math
 
 text = open(sys.argv[1]).readlines()
 
 turns = text[0].strip()
-
 graph = {}
 for line in text[2::]:
     n = re.findall(r"(\w+)[ =]", line)[0]
     edges = re.findall(r"[\( ](\w+)[,\)]", line)
     graph[n] = edges
 
-# def search_steps(s, t, t_index=0, steps=0):
-#     if t_index == len(turns):
-#         t_index = 0
-#     if s == t:
-#         return steps
-#     steps += 1
-#     turn = turns[t_index]
-#     t_index += 1
-#     return search_steps(graph[s][0 if turn == "L" else 1], t, t_index, steps)
-
+# part 1
 steps = 0
 s = "AAA"
-t_index = 0
-while s != "ZZZ":
-    if t_index == len(turns):
-        t_index = 0
-    s = graph[s][0 if turns[t_index] == "L" else 1]
-    steps += 1
-    t_index += 1
 
+while s != "ZZZ":
+    s = graph[s][0 if turns[steps % len(turns)] == "L" else 1]
+    steps += 1
 print("Part one:", steps)
+
+# part 2
+nodes = [n for n in graph.keys() if n[2] == "A"]
+steps = 0
+counts = []
+
+for i in range(len(nodes)):
+    while nodes[i][2] != 'Z':
+        finished = True
+        nodes[i] = graph[nodes[i]][0 if turns[steps % len(turns)] == "L" else 1]
+        steps += 1
+    counts.append(steps)
+    steps = 0
+
+# find least common multiple of step counts for all starting nodes 
+lcm = 1
+for n in counts:
+    lcm = int(lcm*n / math.gcd(lcm, n))
+    
+print("Part two:", lcm)
