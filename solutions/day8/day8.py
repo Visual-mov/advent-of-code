@@ -25,7 +25,6 @@ counts = []
 
 for i in range(len(nodes)):
     while nodes[i][2] != 'Z':
-        finished = True
         nodes[i] = graph[nodes[i]][0 if turns[steps % len(turns)] == "L" else 1]
         steps += 1
     counts.append(steps)
