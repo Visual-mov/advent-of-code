@@ -17,7 +17,7 @@ def get_tile(pos):
 
 def connected(t1, t2, pos):
     if pos[0] == 1:
-        
+        pass
 
 def build_graph(pos, sp=None, graph=[]):
     pt = get_tile(pos)

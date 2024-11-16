@@ -1,5 +1,4 @@
 # advent-of-code
-my solutions for the 2023 advent of code, written in Python.
+my solutions for the 2024 advent of code, as well as previous years
 
 `(╯#-_-)╯╧═╧`
-
